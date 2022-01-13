@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if ((up > 0 || down > 0) && (left > 0 || right > 0)) {
-            move /= 1.2f;
+            move /= 1.5f;
         }
 
         return move;
