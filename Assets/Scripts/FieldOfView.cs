@@ -66,7 +66,6 @@ public class FieldOfView : MonoBehaviour
             {
                 if (playerHit.transform.gameObject.name == playerName)
                 {
-                    Debug.Log("seeing player");
                     lastSeenPlayer = 0;
                 }
             }

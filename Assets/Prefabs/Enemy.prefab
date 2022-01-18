@@ -47,10 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 311
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 55
   origin: {x: 0, y: 0, z: 0}
 --- !u!33 &3798314938611667905
 MeshFilter:
@@ -152,7 +149,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1.72896
+  m_BaseOffset: 1.881939
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &5321054198912191231
