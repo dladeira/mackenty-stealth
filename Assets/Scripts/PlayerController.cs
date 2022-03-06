@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashCooldown;
     [SerializeField] private float dashDistance;
 
+    [SerializeField] private PauseMenu pauseMenu;
 
     private float up;
     private float down;
@@ -22,15 +22,17 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 move = GetAxisMovement() * speedMultiplier;
+        Vector3 move = GetAxisMovement() * (pauseMenu.pauseMenuOpen ? 0 : speedMultiplier);
         rb.AddForce((move * Time.fixedDeltaTime) - rb.velocity, ForceMode.VelocityChange);
         timeSinceDash += Time.deltaTime;
 
-        if (Input.GetAxisRaw("Jump") > 0 && timeSinceDash > dashCooldown) {
+        if (Input.GetAxisRaw("Jump") > 0 && timeSinceDash > dashCooldown)
+        {
             Dash(move);
         }
 
-        if (timeSinceDash < 0.25f) {
+        if (timeSinceDash < 0.25f)
+        {
             rb.AddForce((dashMove * Time.fixedDeltaTime * (dashDistance * 10)) - rb.velocity, ForceMode.VelocityChange);
         }
     }
@@ -70,7 +72,8 @@ public class PlayerController : MonoBehaviour
             move.x = -speedCurve.Evaluate(left);
         }
 
-        if ((up > 0 || down > 0) && (left > 0 || right > 0)) {
+        if ((up > 0 || down > 0) && (left > 0 || right > 0))
+        {
             move /= 1.5f;
         }
 
@@ -86,7 +89,8 @@ public class PlayerController : MonoBehaviour
         return 0;
     }
 
-    void Dash(Vector3 move) {
+    void Dash(Vector3 move)
+    {
         dashMove = move.normalized;
         timeSinceDash = 0;
     }
